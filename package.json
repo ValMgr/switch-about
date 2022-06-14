@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "name": "switchabout",
+  "description": "## Solution technique",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ValMgr/switch-about.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ValMgr/switch-about/issues"
+  },
+  "homepage": "https://github.com/ValMgr/switch-about#readme"
+}
