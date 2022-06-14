@@ -1,20 +1,24 @@
 {
   "dependencies": {
-    "mysql": "^2.18.1"
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.0.2",
+    "sequelize": "^5.21.2"
   },
   "name": "switchabout",
-  "description": "## Solution technique",
+  "description": "...",
   "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ValMgr/switch-about.git"
   },
-  "author": "",
+  "author": "Valentin Mgr, Keshia Mkg",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ValMgr/switch-about/issues"
