@@ -11,7 +11,7 @@ services:
       - MYSQL_USER=$MYSQLDB_USER
       - MYSQL_PASSWORD=$MYSQLDB_PASSWORD
     ports:
-      - "3306:3306"
+      - $DB_PORT:3306
     networks:
       - api
     volumes:
@@ -25,7 +25,7 @@ services:
     restart: on-failure
     env_file: ./.env
     ports:
-      - "3000:3000"
+      - $API_PORT:3000
     environment:
       - WAIT_HOSTS=db:3306
       - WAIT_HOSTS_TIMEOUT=5
@@ -35,6 +35,17 @@ services:
       - api
     volumes:
       - ./api:/api
+
+  app:
+    build: ./app
+    restart: always
+    env_file: ./.env
+    ports:
+      - $APP_PORT:3000
+    networks:
+      - api
+    volumes:
+      - ./app:/app
 
 volumes: 
   db:
