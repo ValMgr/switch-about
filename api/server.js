@@ -20,7 +20,7 @@ db.connect(function (err) {
 
 // get all from formation table
 app.get("/", (req, res) => {
-  db.query("SELECT * FROM FORMATION", (err, result) => {
+  db.query("SELECT firstname, lastname FROM USERS", (err, result) => {
     if (err) {
       console.log(err);
       res.sendStatus(500);
