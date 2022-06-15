@@ -1,38 +1,36 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-const dbConfig = require("./config/db.config.js");
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect,
-  port: dbConfig.port,
-  operatorsAliases: false,
+const mysql = require("mysql");
+const db = mysql.createConnection({
+  host: "db",
+  user: "root",
+  password: "password",
+  database: "db",
+  port: "3306",
+});
 
-  pool: {
-    max: dbConfig.pool.max,
-    min: dbConfig.pool.min,
-    acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
+db.connect(function (err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
   }
+  console.log("connected as id " + db.threadId);
 });
 
-let isConnected = false;
-sequelize.authenticate()
-.then(() => {
-  isConnected = true;
-  console.log('Connection has been established successfully.');
-})
-.catch(err => {
-  isConnected = false;
-  console.error('Unable to connect to the database:', err);
+// get all from formation table
+app.get("/", (req, res) => {
+  db.query("SELECT * FROM FORMATION", (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
-app.get('/', (req, res) => {
-  res.send('DB is connected: ' + isConnected);
-});
-
-const PORT = process.env.NODE_DOCKER_PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log('Server is running on port ' + PORT);
+  console.log("Server is running on port " + PORT);
 });
