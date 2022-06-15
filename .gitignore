@@ -174,3 +174,6 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/node,git,react,dotenv
+
+
+/tools

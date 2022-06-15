@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-
 const mysql = require("mysql");
+const db_loader = require("./db/db_loader");
+
 const db = mysql.createConnection({
   host: "db",
   user: "root",
@@ -12,22 +13,20 @@ const db = mysql.createConnection({
 
 db.connect(function (err) {
   if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
+    console.log(err);
+  } else {
+    console.log("Connected to database");
   }
-  console.log("connected as id " + db.threadId);
 });
 
-// get all from formation table
 app.get("/", (req, res) => {
-  db.query("SELECT firstname, lastname FROM USERS", (err, result) => {
-    if (err) {
-      console.log(err);
-      res.sendStatus(500);
-    } else {
-      res.json(result);
-    }
-  });
+  // Send if the database is connected
+  res.send("Database is connected with id " + db.threadId);
+});
+
+app.get("/load", (req, res) => {
+  db_loader.loadDB("./db/db.csv", db);
+  res.send("Loaded DB");
 });
 
 const PORT = 3000;
