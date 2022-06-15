@@ -2,12 +2,11 @@
 
 ## Installation
 
-`docker-compose build && docker-compose up -d`
+`docker-compose build && docker-compose up -d` <br>
 
-API: [127.0.0.1:3000](127.0.0.1:3000)
-APP: [127.0.0.1:8080](127.0.0.1:8080)
-DB: [127.0.0.1:3306](127.0.0.1:3306)
-
+API: [127.0.0.1:3000](127.0.0.1:3000) <br>
+APP: [127.0.0.1:8080](127.0.0.1:8080) <br>
+DB: [127.0.0.1:3306](127.0.0.1:3306) <br>
 
 ## Solution technique
 
@@ -16,6 +15,6 @@ DB: [127.0.0.1:3306](127.0.0.1:3306)
 
 ## Crédits
 
-Développeurs : [Valentin Magry](https://github.com/ValMgr), [Keshia Mukenge](https://github.com/keshiamukenge)
-UX: ...
+Développeurs : [Valentin Magry](https://github.com/ValMgr), [Keshia Mukenge](https://github.com/keshiamukenge) <br>
+UX: ... <br>
 UI: ...
