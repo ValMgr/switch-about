@@ -12,8 +12,6 @@ services:
       - MYSQL_PASSWORD=$MYSQLDB_PASSWORD
     ports:
       - $DB_PORT:3306
-    networks:
-      - api
     volumes:
       - db:/var/lib/mysql
   api:
@@ -31,8 +29,6 @@ services:
       - WAIT_HOSTS_TIMEOUT=5
       - WAIT_SLEEP_INTERVAL=5
       - WAIT_HOST_CONNECT_TIMEOUT=5
-    networks:
-      - api
     volumes:
       - ./api:/api
 
@@ -42,8 +38,6 @@ services:
     env_file: ./.env
     ports:
       - $APP_PORT:3000
-    networks:
-      - api
     volumes:
       - ./app:/app
 
@@ -53,11 +47,18 @@ services:
     env_file: ./.env
     ports:
       - $ADMINER_PORT:8080
-    networks:
+
+
+  nginx:
+    depends_on:
       - api
+      - app
+    restart: always
+    build: 
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - $PROXY_PORT:80
 
 volumes: 
   db:
-
-networks:
-  api:

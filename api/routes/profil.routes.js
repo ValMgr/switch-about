@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const controller = require("../controllers/formation.controller");
+  const controller = require("../controllers/profil.controller");
   const router = require("express").Router();
 
   router.get("/", controller.getAll);
@@ -8,9 +8,9 @@ module.exports = (app) => {
 
   router.get("/:attribute/:value", controller.getByAttribute);
 
-  router.post("/", controller.create);
+  // router.post("/", controller.create);
 
   router.delete("/:id", controller.delete);
 
-  app.use("/formation", router);
+  app.use("/profil", router);
 };
