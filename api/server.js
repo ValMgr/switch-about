@@ -6,9 +6,9 @@ const db_loader = require("./db/db_loader");
 const app = express();
 const db = require("./config/db");
 
-
-require('./routes/formation.routes')(app);
-require('./routes/user.routes')(app);
+require("./routes/formation.routes")(app);
+require("./routes/user.routes")(app);
+require("./routes/profil.routes")(app);
 
 app.get("/", (req, res) => res.send("SwitchAbout - API v1.0.0"));
 
