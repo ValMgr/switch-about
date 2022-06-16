@@ -1,33 +1,35 @@
 const express = require("express");
-const app = express();
-
+const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const db = mysql.createConnection({
-  host: "db",
-  user: "root",
-  password: "password",
-  database: "db",
-  port: "3306",
-});
+const db_loader = require("./db/db_loader");
 
-db.connect(function (err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + db.threadId);
-});
+const app = express();
+const db = require("./config/db");
 
-// get all from formation table
+
+require('./routes/formation.routes')(app);
+
 app.get("/", (req, res) => {
-  db.query("SELECT firstname, lastname FROM USERS", (err, result) => {
-    if (err) {
-      console.log(err);
-      res.sendStatus(500);
-    } else {
-      res.json(result);
-    }
-  });
+  
+});
+
+
+// app.get("/formation", (req, res) => {
+//   db.query("SELECT * FROM FORMATION", (err, result) => {
+//     if (err) {
+//       console.log("error: ", err);
+//       res.sendStatus(500);
+//       return;
+//     }
+//     res.send(result);
+//     });
+// });
+
+
+
+app.get("/load", (req, res) => {
+  db_loader.loadDB("./db/db.csv", db);
+  res.send("<h1>Loaded DB !</h1> <a href='/'>Back home</a>");
 });
 
 const PORT = 3000;
