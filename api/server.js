@@ -8,24 +8,9 @@ const db = require("./config/db");
 
 
 require('./routes/formation.routes')(app);
+require('./routes/user.routes')(app);
 
-app.get("/", (req, res) => {
-  
-});
-
-
-// app.get("/formation", (req, res) => {
-//   db.query("SELECT * FROM FORMATION", (err, result) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       res.sendStatus(500);
-//       return;
-//     }
-//     res.send(result);
-//     });
-// });
-
-
+app.get("/", (req, res) => res.send("SwitchAbout - API v1.0.0"));
 
 app.get("/load", (req, res) => {
   db_loader.loadDB("./db/db.csv", db);
