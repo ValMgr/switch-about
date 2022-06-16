@@ -1,17 +1,25 @@
 import axios from 'axios';
 
-const header = {
+const headers = {
   'content-type': 'application/json',
+  Accept: 'application/json'
 };
 
 export function getFormDetailsApi() {
-  const response = axios.get(`https://eu-api.jotform.com/user/forms?apiKey=${process.env.REACT_APP_API_KEY_JOTFORM}`, 
+  return axios.get(`https://eu-api.jotform.com/user/forms?apiKey=${process.env.REACT_APP_API_KEY_JOTFORM}`, 
     {
-      ...header,
+      headers: headers,
       method: 'GET'
-    });
-
-  return response;
+    }
+  );
 }
 
-export default { getFormDetailsApi };
+export function getFormationsApi() {
+  return axios.get('http://127.0.0.1:3000/formation', {
+    headers: headers,
+    mode: 'no-cors',
+    method: 'GET'
+  });
+}
+
+export default { getFormDetailsApi, getFormationsApi };
