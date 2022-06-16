@@ -1,6 +1,6 @@
 module.exports = (express, controller) => {
     const router = express.Router();
 
-    router.get("/", controller.getAllFormation);
+    router.get("/formation", controller.getAllFormation);
 
 }
