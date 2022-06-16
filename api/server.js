@@ -1,9 +1,9 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const mysql = require("mysql");
+const cors = require("cors");
 const db_loader = require("./db/db_loader");
 
 const app = express();
+app.use(cors());
 const db = require("./config/db");
 
 require("./routes/formation.routes")(app);
