@@ -57,8 +57,8 @@ Formation.findByAttribute = (attribute, value, result) => {
       }
 
       if (res.length) {
-        console.log("found formation: ", res[0]);
-        result(null, res[0]);
+        console.log("found formation: ", res);
+        result(null, res);
         return;
       }
 
