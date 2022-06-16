@@ -45,7 +45,7 @@ Formation.findById = (id, result) => {
   });
 };
 
-Formation.findByAttribute = (attribute, value, result) => {
+Formation.findBy = (attribute, value, result) => {
   db.query(
     "SELECT * FROM FORMATION WHERE " + attribute + " = ?",
     value,

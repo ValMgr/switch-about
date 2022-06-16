@@ -6,7 +6,7 @@ module.exports = (app) => {
 
   router.get("/:id", controller.getById);
 
-  router.get("/:attribute/:value", controller.getBy);
+  router.get("/:attribute/:value", controller.getByAttribute);
 
   router.post("/", controller.create);
 

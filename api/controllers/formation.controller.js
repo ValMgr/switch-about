@@ -21,8 +21,8 @@ exports.getById = (req, res) => {
     );
 };
 
-exports.getBy = (req, res) => {
-    Formation.findByAttribute(req.params.attribute, req.params.value, (err, result) => {
+exports.getByAttribute = (req, res) => {
+    Formation.findBy(req.params.attribute, req.params.value, (err, result) => {
         if (err) {
         res.sendStatus(500);
         return;
