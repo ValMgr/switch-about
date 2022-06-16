@@ -1,32 +1,49 @@
 import React, { useState, useEffect } from 'react';
 
-import { FormationsList, Loader } from '../components';
+import { FormationsList, Loader, Error } from '../components';
 import { getFormationsApi } from '../services.api';
+import { PageContainer } from './styledComponents';
 
 export function Formations() {
   const [formations, setFormations] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 	
-  async function getFormations() {
-    try {
-      const response = await getFormationsApi();
-      console.log(response);
-    } catch (error) {
-      console.log(error, setFormations);
-    }
+  function getFormations() {
+    setLoading(true);
+
+    getFormationsApi().then(response => {
+      setLoading(false);
+      setFormations(response.data);
+    }).catch(() => {
+      setError(true);
+    }).finally(() => {
+      setLoading(false);
+    });
   }
 
   useEffect(() => {
     getFormations();
   }, []);
 
-  if(!formations) {
+  if(formations) {
+    console.log(formations);
+  }
+
+  if(error) {
+    return <Error message="Une erreur est survenue lors de la récupération des formations. Veuillez recharger la page." />;
+  }
+
+  if(loading && !error) {
     return (
-      <Loader />
+      <Loader message="Récupération de la liste des formations en cours..." />
     );
   }
 
   return(
-    <FormationsList formations={formations} />
+    <PageContainer>
+      <FormationsList formations={formations} />
+    </PageContainer>
   );
 }
 
