@@ -7,21 +7,23 @@ const app = express();
 const db = require("./config/db");
 
 
+require('./routes/formation.routes')(app);
 
 app.get("/", (req, res) => {
   
 });
 
-app.get("/formation", (req, res) => {
-  db.query("SELECT * FROM FORMATION", (err, result) => {
-    if (err) {
-      console.log("error: ", err);
-      res.sendStatus(500);
-      return;
-    }
-    res.send(result);
-    });
-});
+
+// app.get("/formation", (req, res) => {
+//   db.query("SELECT * FROM FORMATION", (err, result) => {
+//     if (err) {
+//       console.log("error: ", err);
+//       res.sendStatus(500);
+//       return;
+//     }
+//     res.send(result);
+//     });
+// });
 
 
 
