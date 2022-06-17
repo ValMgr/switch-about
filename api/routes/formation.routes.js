@@ -12,5 +12,5 @@ module.exports = (app) => {
 
   router.delete("/:id", controller.delete);
 
-  app.use("/formation", router);
+  app.use("/formations", router);
 };

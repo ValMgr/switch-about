@@ -8,7 +8,7 @@ RUN chmod +x /wait
 
 RUN npm install -g nodemon
 WORKDIR /api
-COPY package.json .
+COPY package*.json .
 RUN npm install
 COPY . .
 

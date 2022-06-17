@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   db:
@@ -31,6 +31,7 @@ services:
       - WAIT_HOST_CONNECT_TIMEOUT=5
     volumes:
       - ./api:/api
+      - api_node_modules:/api/node_modules/
 
   app:
     build: ./app
@@ -40,25 +41,16 @@ services:
       - $APP_PORT:3000
     volumes:
       - ./app:/app
+      - app_node_modules:/app/node_modules/
 
-  adminer: 
+  adminer:
     image: adminer
     restart: always
     env_file: ./.env
     ports:
       - $ADMINER_PORT:8080
 
-
-  nginx:
-    depends_on:
-      - api
-      - app
-    restart: always
-    build: 
-      dockerfile: Dockerfile
-      context: ./nginx
-    ports:
-      - $PROXY_PORT:80
-
-volumes: 
+volumes:
   db:
+  api_node_modules:
+  app_node_modules:
