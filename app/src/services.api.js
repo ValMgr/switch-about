@@ -22,4 +22,12 @@ export function getFormationsApi() {
   });
 }
 
+export function getUsersApi() {
+  return axios.get('http://127.0.0.1:3000/user', {
+    headers: headers,
+    mode: 'no-cors',
+    method: 'GET'
+  });
+}
+
 export default { getFormDetailsApi, getFormationsApi };
