@@ -8,7 +8,7 @@ module.exports = (app) => {
 
   router.get("/:attribute/:value", controller.getByAttribute);
 
-  // router.post("/", controller.create);
+  router.post("/", controller.create);
 
   router.delete("/:id", controller.delete);
 

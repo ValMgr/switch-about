@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS FORMATION(
        online TINYINT(1) NOT NULL DEFAULT 0,
        duration INT NOT NULL,
        unit VARCHAR(255) NOT NULL,
-       level VARCHAR(255) NOT NULL,
+       level LONGTEXT NOT NULL,
        degree LONGTEXT NOT NULL,
        category VARCHAR(255) NOT NULL,
        subcategory VARCHAR(255),
