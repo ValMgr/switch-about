@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS USER(
        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
-INSERT INTO USERS(firstname, lastname, age, phone, email, password) VALUES  
+INSERT INTO USER(firstname, lastname, age, phone, email, password) VALUES  
   ("Mark","Montoya",23,"05 66 58 36 44","facilisi.sed@icloud.edu","FAY86HOM6EE"),
   ("Harriet","Barron",42,"08 24 29 40 58","semper.tellus@protonmail.edu","KHR42PJF5YC"),
   ("Elmo","Thomas",28,"03 58 50 26 19","malesuada.fringilla.est@google.ca","RUY15ETF0XD"),
