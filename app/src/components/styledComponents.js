@@ -17,8 +17,10 @@ export const ContainerLoader = styled.div`
 export const ContainerError = styled.div`
 	width: 100%;
 	height: fit-content;
-	padding: 1rem 0;
+	padding: 1rem;
 	text-align: left;
+	margin: 1rem 0;
+	background-color: ${colors.secondary};
 `;
 
 export const ContainerFormation = styled.div`

@@ -26,17 +26,19 @@ export function Formations() {
     getFormations();
   }, []);
 
-  if(formations) {
-    console.log(formations);
-  }
-
   if(error) {
-    return <Error message="Une erreur est survenue lors de la récupération des formations. Veuillez recharger la page." />;
+    return (
+      <PageContainer>
+        <Error message="Une erreur est survenue lors de la récupération des formations. Veuillez recharger la page." />
+      </PageContainer>
+    );
   }
 
   if(loading && !error) {
     return (
-      <Loader message="Récupération de la liste des formations en cours..." />
+      <PageContainer>
+        <Loader message="Récupération de la liste des formations en cours..." />
+      </PageContainer>
     );
   }
 
