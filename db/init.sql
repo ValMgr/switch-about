@@ -58,6 +58,18 @@ CREATE TABLE IF NOT EXISTS PROFIL(
        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS ADVICE(
+       profil INT NOT NULL,
+       formation INT NOT NULL,
+       PRIMARY KEY(profil, formation),
+       CONSTRAINT fk_profil_advice 
+              FOREIGN KEY (profil) REFERENCES PROFIL(id) 
+              ON DELETE CASCADE ON UPDATE CASCADE,
+       CONSTRAINT fk_formation_advice
+              FOREIGN KEY (formation) REFERENCES FORMATION(id) 
+              ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
 
 ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'password';
 FLUSH PRIVILEGES;
