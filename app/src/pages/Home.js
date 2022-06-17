@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Form, Error, Loader } from '../components';
+import { Form, Error, Loader, Menu } from '../components';
 import { PageContainer } from './styledComponents';
 import { getFormDetailsApi } from '../services.api';
 
@@ -8,6 +8,13 @@ export function Home() {
   const [form, setForm] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const menuItems = [
+    {
+      id: 0,
+      label: 'Trouver une formation',
+      linkTo: '/'
+    }
+  ];
 	
   async function getFormDetails() {
     setLoading(true);
@@ -45,6 +52,7 @@ export function Home() {
 
   return(
     <PageContainer width={`${100}vw`} height={`${100}vh`} margin="0">
+      <Menu items={menuItems} displayButton={true} />
       {form && (
         <Form formId={form.id} />
       )}
