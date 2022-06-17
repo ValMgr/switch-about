@@ -1,9 +1,21 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
-import { Home, Formations, Login, Loader, Error } from './pages';
+import { Home, Formations, Login, Admin } from './pages';
 import { getUsersApi } from './services.api';
-import { PageContainer } from './pages/styledComponents';
+
+function AdminRoute({ isAuthorize, PageComponent }) {
+  if(isAuthorize) {
+    return (
+      PageComponent
+    );
+  }
+
+  return (
+    <Navigate to="/login" />
+  );
+}
 
 function App() {
   const [email, setEmail] = useState('');
@@ -48,10 +60,10 @@ function App() {
     }
   }
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  function onSubmit(event) {
+    event.preventDefault();
     checkIfIsAuthorize();
-  };
+  }
 
   useEffect(() => {
     getUsers();
@@ -60,22 +72,40 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/formations"
+          element={
+            <AdminRoute
+              PageComponent={<Formations />}
+            />
+          }
+        />
         <Route
           path="/admin"
-          element={isAuthorize ? (
-            <Formations />
-          ) : (
-            <Login
-              users={users}
-              onSubmit={onSubmit}
-              onUserNameChange={onUserNameChange}
-              onPasswordChange={onPasswordChange}
-              isAuthorize={isAuthorize}
-              currentUserId={currentUserId}
-              loading={loading}
-              error={error}
-            />)}></Route>
+          element={
+            <AdminRoute
+              PageComponent={<Admin />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={isAuthorize ?
+            <Admin /> : (
+              <Login
+                users={users}
+                onSubmit={onSubmit}
+                onUserNameChange={onUserNameChange}
+                onPasswordChange={onPasswordChange}
+                isAuthorize={isAuthorize}
+                currentUserId={currentUserId}
+                loading={loading}
+                error={error}
+              />
+            )
+          }
+        />
       </Routes>
     </Router>
   );
