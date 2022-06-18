@@ -2,8 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
-import { Home, Formations, Login, Admin } from './pages';
-import { getUsersApi } from './services.api';
+import Home from './pages/Home';
+import Formations from './pages/Admin/Formations';
+import Login from './pages/Login';
+import AdminHome from './pages/Admin/AdminHome';
+import FindFormations from './pages/FindFormations';
+import Profiles from './pages/Admin/Profiles';
+import { getUsersApi } from './services/users/users.services';
 
 function AdminRoute({ isAuthorize, PageComponent }) {
   if(isAuthorize) {
@@ -73,6 +78,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/trouver-une-formation" element={<FindFormations />} />
+        <Route path="/profiles" element={<Profiles />} />
         <Route path="/formations" element={<Formations />} />
         {/* <Route
           path="/formations"
@@ -86,14 +93,14 @@ function App() {
           path="/admin"
           element={
             <AdminRoute
-              PageComponent={<Admin />}
+              PageComponent={<AdminHome />}
             />
           }
         />
         <Route
           path="/login"
           element={isAuthorize ?
-            <Admin /> : (
+            <AdminHome /> : (
               <Login
                 users={users}
                 onSubmit={onSubmit}
