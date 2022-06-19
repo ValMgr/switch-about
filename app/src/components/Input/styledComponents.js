@@ -9,7 +9,7 @@ export const DefaultInput = styled.input`
 	font-family: ${fonts.bodyFont};
 	padding: 0.5rem;
 	border-radius: 0.6rem;
-	margin: 0.3rem 0;
+	${({ margin }) => margin ? margin : `${0.3}rem ${0}`}
 	width: 100%;
 `;
 
