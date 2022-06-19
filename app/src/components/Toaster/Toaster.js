@@ -3,10 +3,11 @@ import React from 'react';
 
 import { ContainerToaster } from './styledComponents';
 
-export function Toaster({ message, type }) {
+export function Toaster({ message, type, Component }) {
   return(
-    <ContainerToaster type={type} >
-      <p>{message}</p>
+    <ContainerToaster type={type}>
+      {message && <p>{message}</p>}
+      {Component && Component}
     </ContainerToaster>
   );
 }

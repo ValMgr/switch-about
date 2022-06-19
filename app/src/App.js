@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import AdminHome from './pages/Admin/AdminHome';
 import FindFormations from './pages/FindFormations';
 import Profiles from './pages/Admin/Profiles';
+import Registration from './pages/Admin/Registration';
 import { getUsersApi } from './services/users/users.services';
 
 function AdminRoute({ isAuthorize, PageComponent }) {
@@ -28,6 +29,7 @@ function App() {
   const [users, setUsers] = useState('');
   const [currentUserId, setCurrentUserId] = useState();
   const [isAuthorize, setIsAuthorize] = useState(false);
+  const [authentificationFail, setAuthentificationFail] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -55,11 +57,15 @@ function App() {
   function checkIfIsAuthorize() {
     if(users && email && password) {
       users.forEach(user => {
-        if(email === user.email && password === user.password) {
-          console.log('connecté ! => email : ' + email + ' password : ' + password );
-          setIsAuthorize(true);
-          const id = user.id - 1;
-          setCurrentUserId(id);
+        if(user.admin === 1) {
+          if(email === user.email && password === user.password) {
+            console.log('connecté ! => email : ' + email + ' password : ' + password );
+            setIsAuthorize(true);
+            const id = user.id - 1;
+            setCurrentUserId(id);
+          }
+
+          setAuthentificationFail(true);
         }
       });
     }
@@ -81,11 +87,20 @@ function App() {
         <Route path="/trouver-une-formation" element={<FindFormations />} />
         <Route path="/profiles" element={<Profiles />} />
         <Route path="/formations" element={<Formations />} />
+        <Route path="/creer-compte-membre" element={<Registration />} />
         {/* <Route
           path="/formations"
           element={
             <AdminRoute
               PageComponent={<Formations />}
+            />
+          }
+        />
+        <Route
+          path="/registration"
+          element={
+            <AdminRoute
+              PageComponent={<Registration />}
             />
           }
         /> */}
@@ -100,7 +115,7 @@ function App() {
         <Route
           path="/login"
           element={isAuthorize ?
-            <AdminHome /> : (
+            <AdminHome userName={users[currentUserId].firstname} /> : (
               <Login
                 users={users}
                 onSubmit={onSubmit}
@@ -110,6 +125,9 @@ function App() {
                 currentUserId={currentUserId}
                 loading={loading}
                 error={error}
+                email={email}
+                password={password}
+                authentificationFail={authentificationFail}
               />
             )
           }

@@ -3,11 +3,11 @@ import React from 'react';
 
 import { DefaultInput, InputLabel, ContainerInput } from './styledComponents';
 
-export function Input({ onChange, label }) {
+export function Input({ onChange, label, type, pattern, margin }) {
   return (
     <ContainerInput>
       <InputLabel>{label}</InputLabel>
-      <DefaultInput onChange={onChange} />
+      <DefaultInput type={type} pattern={pattern} onChange={onChange} margin={margin} />
     </ContainerInput>
   );
 }

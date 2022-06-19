@@ -4,6 +4,14 @@ import React, { useEffect, useState } from 'react';
 import Toaster from '../Toaster';
 import { ContainerFormation, ContainerFormations, ListResult, CategoryTitle } from './styledComponents';
 
+export function ToasterContent({ inputValue }) {
+  return(
+    <p>Pas de formations disponibles pour cette recherche : 
+      <strong>{` "${inputValue}"`}</strong>
+    </p>
+  );
+}
+
 export function FormationList({ formations, inputValue, inputSelectValue }) {
   const [filteredFormations, setFilteredFormations] = useState();
   const [inputSelectValueIsEmpty, setInputSelectValueIsEmpty] = useState(false);
@@ -13,6 +21,7 @@ export function FormationList({ formations, inputValue, inputSelectValue }) {
       if (inputValue === '') {
         return formations;
       } else {
+        setInputSelectValueIsEmpty(false);
         switch (inputSelectValue) {
         case 'nom':
           return formation.name.toLowerCase().includes(inputValue);
@@ -51,7 +60,7 @@ export function FormationList({ formations, inputValue, inputSelectValue }) {
         </div>
       )}
       {filteredFormations && filteredFormations.length === 0 && !inputSelectValueIsEmpty && (
-        <Toaster message="Pas de formations disponibles" type="information" />
+        <Toaster Component={<ToasterContent inputValue={inputValue} />} type="information" />
       )}
       {inputSelectValueIsEmpty && (
         <Toaster message="Selectionner une catégorie pour effectuer une recherche" type="warning" />

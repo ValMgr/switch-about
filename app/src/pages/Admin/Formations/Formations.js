@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import FormationsList from '../../../components/FormationsList/FormationsList';
+import FormationsList from '../../../components/FormationsList';
 import Loader from '../../../components/Loader';
 import Toaster from '../../../components/Toaster';
 import { Input, InputSelect } from '../../../components/Input';
@@ -88,7 +88,7 @@ export function Formations() {
       <p>Sélectionner une catégorie pour pouvoir rechercher une formation</p>
       <ContainerInputsSearch>
         <InputSelect label="Selectionner une catégorie" options={options} onChange={onSelectSearchType} />
-        <Input placeholder="Rechercher" onChange={onSearch} />
+        <Input placeholder="Rechercher" onChange={onSearch} margin={0} />
       </ContainerInputsSearch>
       <FormationsList formations={formations} inputValue={research} inputSelectValue={category} />
     </PageContainer>

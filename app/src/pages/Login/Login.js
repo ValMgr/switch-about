@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 
 import Loader from '../../components/Loader';
 import Toaster from '../../components/Toaster';
@@ -17,8 +17,12 @@ export function Login({
   isAuthorize,
   currentUserId,
   loading,
-  error
+  error,
+  email,
+  password,
+  authentificationFail
 }) {
+  const [inputValue, setInputValue] = useState(false);
   const items = [
     {
       id: 0,
@@ -26,6 +30,10 @@ export function Login({
       linkTo: '/'
     }
   ];
+
+  function checkInputValue() {
+    setInputValue(true);
+  }
 
   if(loading) {
     return(
@@ -49,6 +57,15 @@ export function Login({
   return (
     <PageContainer>
       <Menu items={items} displayButton={true} buttonContent="Se connecter" buttonTo="/login" />
+      {inputValue && email === '' &&
+        <Toaster type="error" message="Le champs email est vide" />
+      }
+      {inputValue && password === '' &&
+        <Toaster type="error" message="Le champs mot de passe est vide" />
+      }
+      {authentificationFail &&
+        <Toaster type="error" message="L'email ou le mot de passe est incorrecte" />
+      }
       <ContainerForm>
         <h2>Se connecter</h2>
         <Subtitle>( Réservé aux membres )</Subtitle>
@@ -58,7 +75,10 @@ export function Login({
           content="Se connecter"
           width={`${100}%`}
           margin={true}
-          onClick={onSubmit}
+          onClick={event => {
+            onSubmit(event);
+            checkInputValue();
+          }}
         />
       </ContainerForm>
       {isAuthorize && currentUserId && (
