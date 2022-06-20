@@ -40,8 +40,7 @@ exports.delete = (req, res) => {
   });
 };
 
-exports.create = (req, res) => {
-  // insert into db new profil
-  // delete form submission from JotForm
-  // send new profil to Airtable
+exports.create = (req, res, next) => {
+  console.log(req.body);
+  res.send("OK");
 };
