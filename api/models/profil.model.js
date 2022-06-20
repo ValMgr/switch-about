@@ -9,6 +9,7 @@ const Profil = (profil) => {
   this.activity = profil.activity;
   this.degree = profil.degree;
   this.situation = profil.situation;
+  this.personality = profil.personality;
   this.formation_type = profil.formation_type;
   this.formation_duration = profil.formation_duration;
   this.formation_start = profil.formation_start;
@@ -16,8 +17,6 @@ const Profil = (profil) => {
   this.formation_cpf = profil.formation_cpf;
   this.category = profil.category;
   this.subcategory = profil.subcategory;
-  this.interets = profil.interets;
-  this.personality = profil.personality;
   this.desire_1 = profil.desire_1;
   this.desire_2 = profil.desire_2;
   this.desire_3 = profil.desire_3;
