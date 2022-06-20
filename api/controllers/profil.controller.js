@@ -62,8 +62,6 @@ exports.create = (req, res, next) => {
     formation_cpf: formData.q25_laFormation25.field_4 === "CPF" ? 1 : 0,
     category: formData.q47_selectionnezDes.join(", "),
     subcategory: null,
-    adjectives: formData.q48_quellesSont.join(", "),
-    interets: formData.q46_quelsCentres.join(", "),
     personality: formData.q45_decriveznousVotre.join(", "),
     desire_1: formData.q41_quiEtesvous41.field_1,
     desire_2: formData.q41_quiEtesvous41.field_2,

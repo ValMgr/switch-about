@@ -45,18 +45,17 @@ CREATE TABLE IF NOT EXISTS FORMATION(
 
 CREATE TABLE IF NOT EXISTS PROFIL(
        id INT NOT NULL AUTO_INCREMENT KEY,
-       -- user personnal informations
        firstname VARCHAR(255) NOT NULL,
        lastname VARCHAR(255) NOT NULL,
        age INT NOT NULL,
        email VARCHAR(255) NOT NULL,
        phone VARCHAR(255) NOT NULL,
-       -- answers
        activity VARCHAR(255) NOT NULL,
        degree VARCHAR(255) NOT NULL,
        situation VARCHAR(255) NOT NULL,
+       personnality VARCHAR(255) NOT NULL,
        formation_type VARCHAR(255) NOT NULL,
-       formation_duration INT NOT NULL,
+       formation_duration VARCHAR(255) NOT NULL,
        formation_start VARCHAR(255) NOT NULL,
        formation_payment VARCHAR(255) NOT NULL,
        formation_cpf TINYINT(1) NOT NULL DEFAULT 0,
