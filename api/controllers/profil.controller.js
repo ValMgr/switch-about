@@ -41,6 +41,14 @@ exports.delete = (req, res) => {
 };
 
 exports.create = (req, res, next) => {
-  console.log(req.body);
-  res.send("OK");
+  Profil.create(req.body, (err, result) => {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+
+    
+  });
+
+  res.sendStatus(201).send("Submission processed successfully !");
 };
