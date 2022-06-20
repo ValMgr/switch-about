@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS PROFIL(
        activity VARCHAR(255) NOT NULL,
        degree VARCHAR(255) NOT NULL,
        situation VARCHAR(255) NOT NULL,
-       personnality VARCHAR(255) NOT NULL,
+       personality VARCHAR(255) NOT NULL,
        formation_type VARCHAR(255) NOT NULL,
        formation_duration VARCHAR(255) NOT NULL,
        formation_start VARCHAR(255) NOT NULL,
