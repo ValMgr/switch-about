@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait for database to be ready
-/wait --timeout=5 --port=3306
+/wait --timeout=10 --interval=10 --port=3306
 
 # Start the API
 npm run start &

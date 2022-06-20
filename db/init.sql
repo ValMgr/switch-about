@@ -45,13 +45,16 @@ CREATE TABLE IF NOT EXISTS FORMATION(
 
 CREATE TABLE IF NOT EXISTS PROFIL(
        id INT NOT NULL AUTO_INCREMENT KEY,
+       -- user personnal informations
        firstname VARCHAR(255) NOT NULL,
        lastname VARCHAR(255) NOT NULL,
        age INT NOT NULL,
        email VARCHAR(255) NOT NULL,
        phone VARCHAR(255) NOT NULL,
+       -- answers
        activity VARCHAR(255) NOT NULL,
        degree VARCHAR(255) NOT NULL,
+       situation VARCHAR(255) NOT NULL,
        formation_type VARCHAR(255) NOT NULL,
        formation_duration INT NOT NULL,
        formation_start VARCHAR(255) NOT NULL,
@@ -59,9 +62,13 @@ CREATE TABLE IF NOT EXISTS PROFIL(
        formation_cpf TINYINT(1) NOT NULL DEFAULT 0,
        category VARCHAR(255) NOT NULL,
        subcategory VARCHAR(255),
-       values VARCHAR(255),
+       adjectives VARCHAR(255),
        interets VARCHAR(255),
        personality VARCHAR(255),
+       desire_1 VARCHAR(255) NOT NULL,
+       desire_2 VARCHAR(255) NOT NULL,
+       desire_3 VARCHAR(255) NOT NULL,
+       desire_4 VARCHAR(255) NOT NULL,
        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
