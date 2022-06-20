@@ -19,11 +19,6 @@ require("./routes/profil.routes")(app);
 
 app.get("/", (req, res) => res.send("SwitchAbout - API v1.0.0"));
 
-app.post("/test", (req, res) => {
-  console.log(req.body);
-  res.send("OK");
-});
-
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);

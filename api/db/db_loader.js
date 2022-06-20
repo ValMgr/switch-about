@@ -7,7 +7,7 @@ exports.loadDB = function (filename, db) {
     .on("data", (row) => {
       row.cpf = row.cpf === "checked" ? 1 : 0;
       row.online = row.online === "online" ? 1 : 0;
-      if (row.duration === "") row.duration = 0;
+      row.duration = row.duration ? row.duration : 0;
       db.query(`INSERT INTO FORMATION SET ?`, row, (err, result) => {
         if (err) {
           console.log(err);
