@@ -69,8 +69,8 @@ export function Login({
       <ContainerForm>
         <h2>Se connecter</h2>
         <Subtitle>( Réservé aux membres )</Subtitle>
-        <Input onChange={onUserNameChange} label="Email" />
-        <Input onChange={onPasswordChange} label="Mot de passe" />
+        <Input type="email" onChange={onUserNameChange} label="Email" />
+        <Input type="password" onChange={onPasswordChange} label="Mot de passe" />
         <Button
           content="Se connecter"
           width={`${100}%`}

@@ -37,3 +37,9 @@ export const ContainerInput = styled.div`
 	margin: 1rem 0.5rem 1rem 0;
 	width: 100%;
 `;
+
+export const ContainerInputsSearch = styled.div`
+	width: 100%;
+	height: fit-content;
+	display: flex;
+`;

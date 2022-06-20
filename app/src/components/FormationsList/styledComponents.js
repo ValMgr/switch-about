@@ -22,7 +22,7 @@ export const ListResult = styled.p`
 	font-size: 0.8rem;
 	width: 100%;
 	height: fit-content;
-	text-align: right;
+	text-align: left;
 `;
 
 export const CategoryTitle = styled.p`
