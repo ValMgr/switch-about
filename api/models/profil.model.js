@@ -4,11 +4,24 @@ const Profil = (profil) => {
   this.firstname = profil.firstname;
   this.lastname = profil.lastname;
   this.age = profil.age;
-  this.phone = profil.phone;
   this.email = profil.email;
-  this.password = profil.password;
-  this.formation = profil.formation;
-  this.user = profil.user;
+  this.phone = profil.phone;
+  this.activity = profil.activity;
+  this.degree = profil.degree;
+  this.situation = profil.situation;
+  this.formation_type = profil.formation_type;
+  this.formation_duration = profil.formation_duration;
+  this.formation_start = profil.formation_start;
+  this.formation_payment = profil.formation_payment;
+  this.formation_cpf = profil.formation_cpf;
+  this.category = profil.category;
+  this.subcategory = profil.subcategory;
+  this.interets = profil.interets;
+  this.personality = profil.personality;
+  this.desire_1 = profil.desire_1;
+  this.desire_2 = profil.desire_2;
+  this.desire_3 = profil.desire_3;
+  this.desire_4 = profil.desire_4;
 };
 
 Profil.findAll = (result) => {

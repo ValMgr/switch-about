@@ -39,8 +39,7 @@ exports.create = (req, res) => {
         return;
         }
         res.send(result);
-    }
-    );
+    });
 }
 
 exports.delete = (req, res) => {
@@ -50,6 +49,5 @@ exports.delete = (req, res) => {
         return;
         }
         res.send(result);
-    }
-    );
+    });
 }

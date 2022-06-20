@@ -32,7 +32,13 @@ exports.getByAttribute = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    
+    Formation.create(req.body, (err, result) => {
+        if (err) {
+        res.sendStatus(500);
+        return;
+        }
+        res.send(result);
+    });
 };
 
 exports.delete = (req, res) => {
