@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import FormationsList from '../../../components/FormationsList';
 import Loader from '../../../components/Loader';
 import Toaster from '../../../components/Toaster';
-import { Input, InputSelect } from '../../../components/Input';
+import { InputSearch } from '../../../components/Input';
 import { getFormationsApi } from '../../../services/formations/formations.services';
 import { PageContainer } from '../../styledComponents';
 import { AdminMenu } from '../components';
-import { ContainerInputsSearch } from './styledComponents';
 
 export function Formations() {
   const [formations, setFormations] = useState();
@@ -86,10 +85,11 @@ export function Formations() {
       <AdminMenu />
       <h2>Les formations</h2>
       <p>Sélectionner une catégorie pour pouvoir rechercher une formation</p>
-      <ContainerInputsSearch>
-        <InputSelect label="Selectionner une catégorie" options={options} onChange={onSelectSearchType} />
-        <Input placeholder="Rechercher" onChange={onSearch} margin={0} />
-      </ContainerInputsSearch>
+      <InputSearch
+        options={options}
+        onInputSelectValueChange={onSelectSearchType}
+        onInputValueChange={onSearch}
+      />
       <FormationsList formations={formations} inputValue={research} inputSelectValue={category} />
     </PageContainer>
   );

@@ -3,7 +3,7 @@
 npm run start &
 
 # Open localtunnel to the API
-lt --port 3000 --subdomain switchabout &
+lt --port 3000 --subdomain $API_SUBDOMAIN &
 
 # Wait for any process to exit
 wait -n
