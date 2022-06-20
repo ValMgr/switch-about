@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("../db/db");
 
 const Formation = (formation) => {
   this.name = formation.name;
