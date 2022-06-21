@@ -5,9 +5,9 @@
 Le but du projet est d'automatiser la proposition de formation à l'aide d'un questionnaire (Jotform / typeform).
 
 
-Actuellement il existe une liste de formation en base de donnée sur le site client, ainsi qu'un formulaire en ligne (Typeform) envoyant les données au service Airtable. La formation la plus compatible est déterminer à l'issue d'un rendez-vous téléphonique de 20 minutes après chaque soumission au formulaire et est ensuite insérer sur Airtable. <br>
+Actuellement il existe une liste de formation en base de donnée sur le site client, ainsi qu'un formulaire en ligne (Typeform) envoyant les données au service Airtable. La formation la plus compatible est déterminer à l'issue d'un rendez-vous téléphonique de 20 minutes après chaque soumission au formulaire et est ensuite insérer sur Airtable. 
+<br>
 Il n'existe donc aucun lien entre la liste des formations et les données envoyées par le formulaire.
-
 
 
 Notre objectif est de fournir une solution technique rapide et fonctionnel pouvant être rapidement impémentée sur l'environnement du site client actuel, et d'éventullement réduire le nombre de services qui interviennent dans le processus.
