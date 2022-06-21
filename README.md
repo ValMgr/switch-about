@@ -15,9 +15,13 @@ DB: [127.0.0.1:3306](http://127.0.0.1:3306) <br>
 ## Solution technique
 
 Nous avons une API en nodejs + Express connecté à une base de donnée en MySQL mettant à disposition des routes basique pour manipuler les 3 modèles de données présent: user, formations, profil. 
+
 <br>
+
 Les profil sont généré grace l'API de Jotform qui via un webhook poste les données à l'API qui les intègrent à la BDD et les lies à des formations. 
+
 <br>
+
 L'application front react est un backoffice basique qui affiche les données JSON récupéré depuis l'API.
 
 
@@ -38,5 +42,5 @@ ADMINER_PORT=8888
 
 ## Crédits
 
-API (Nodejs) : [Valentin Magry](https://github.com/ValMgr)
+API (Nodejs) : [Valentin Magry](https://github.com/ValMgr) <br>
 APP (React) : [Keshia Mukenge](https://github.com/keshiamukenge)
