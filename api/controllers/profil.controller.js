@@ -43,6 +43,7 @@ exports.delete = (req, res) => {
 
 exports.create = (req, res, next) => {
   const formData = JSON.parse(req.body.rawRequest);
+  console.log('submissionID', req.body.submissionID);
   const profil = {
     firstname: formData.q3_name.first,
     lastname: formData.q3_name.last,
@@ -63,6 +64,7 @@ exports.create = (req, res, next) => {
     desire_2: formData.q41_desire.field_2,
     desire_3: formData.q41_desire.field_3,
     desire_4: formData.q41_desire.field_4,
+    submissionID: req.body.submissionID,
   };
 
   Profil.create(profil, (err, result) => {

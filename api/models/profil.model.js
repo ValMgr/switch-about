@@ -21,6 +21,7 @@ const Profil = (profil) => {
   this.desire_2 = profil.desire_2;
   this.desire_3 = profil.desire_3;
   this.desire_4 = profil.desire_4;
+  this.submissionID = profil.submissionID;
 };
 
 Profil.findAll = (result) => {
