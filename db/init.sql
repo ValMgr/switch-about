@@ -58,7 +58,6 @@ CREATE TABLE IF NOT EXISTS PROFIL(
        formation_duration VARCHAR(255) NOT NULL,
        formation_start VARCHAR(255) NOT NULL,
        formation_payment VARCHAR(255) NOT NULL,
-       formation_cpf TINYINT(1) NOT NULL DEFAULT 0,
        category VARCHAR(255) NOT NULL,
        subcategory VARCHAR(255),
        desire_1 VARCHAR(255) NOT NULL,

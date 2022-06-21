@@ -30,8 +30,6 @@ Profil.findAll = (result) => {
       result(null, err);
       return;
     }
-
-    console.log("profils: ", res);
     result(null, res);
   });
 };
