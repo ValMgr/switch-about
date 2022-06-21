@@ -1,7 +1,5 @@
 const Profil = require("../models/profil.model");
 const findFormation = require("../services/find_formation.services");
-const airtable = require("../services/airtable.services");
-const axios = require("axios");
 
 exports.getAll = (req, res) => {
   Profil.findAll((err, result) => {
@@ -19,6 +17,7 @@ exports.getById = (req, res) => {
       res.sendStatus(500);
       return;
     }
+    findFormation(result);
     res.send(result);
   });
 };
@@ -46,27 +45,25 @@ exports.delete = (req, res) => {
 exports.create = (req, res, next) => {
   const formData = JSON.parse(req.body.rawRequest);
   const profil = {
-    firstname: formData.q3_nom.first,
-    lastname: formData.q3_nom.last,
+    firstname: formData.q3_name.first,
+    lastname: formData.q3_name.last,
     age: formData.q7_age,
     email: formData.q4_email,
-    phone: formData.q5_numeroDe.phone,
-    situation: formData.q37_quelleEst,
-    activity: formData.q32_monActivite,
-    degree: formData.q33_monNiveau,
-    formation_type: formData.q25_laFormation25.field_1,
-    formation_duration:
-      formData.q25_laFormation25.field_2 === "Courte (12 mois max)" ? 12 : 24,
-    formation_start: formData.q25_laFormation25.field_3,
-    formation_payment: formData.q25_laFormation25.field_4,
-    formation_cpf: formData.q25_laFormation25.field_4 === "CPF" ? 1 : 0,
-    category: formData.q47_selectionnezDes.join(", "),
+    phone: formData.q5_phone.phone,
+    situation: formData.q37_situation,
+    activity: formData.q32_activity,
+    degree: formData.q33_degree,
+    formation_type: formData.q25_formation.field_1,
+    formation_duration: formData.q25_formation.field_2,
+    formation_start: formData.q25_formation.field_3,
+    formation_payment: formData.q25_formation.field_4,
+    category: formData.q47_category.join(", "),
     subcategory: null,
-    personality: formData.q45_decriveznousVotre.join(", "),
-    desire_1: formData.q41_quiEtesvous41.field_1,
-    desire_2: formData.q41_quiEtesvous41.field_2,
-    desire_3: formData.q41_quiEtesvous41.field_3,
-    desire_4: formData.q41_quiEtesvous41.field_4,
+    personality: formData.q48_personality.join(", "),
+    desire_1: formData.q41_desire.field_1,
+    desire_2: formData.q41_desire.field_2,
+    desire_3: formData.q41_desire.field_3,
+    desire_4: formData.q41_desire.field_4,
   };
 
   Profil.create(profil, (err, result) => {
@@ -77,7 +74,7 @@ exports.create = (req, res, next) => {
 
     
     // const profil = findFormation(result);
-    // airtable.push(profil);
+
     // axios.delete(`https://eu-api.jotform.com/submissions/${submissionId}?apiKey=${process.env.JOTFORM_KEY}`);
     
     res.send(result);

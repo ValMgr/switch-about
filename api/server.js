@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const db_loader = require("./db/db_loader");
+const findFormation = require("./services/find_formation.services");
 
 const app = express();
 app.use(cors());
