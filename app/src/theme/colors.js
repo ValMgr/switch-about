@@ -10,7 +10,8 @@ export const colors = {
   black: '#0E1931',
   borderInput: 'rgba(14, 25, 49, 0.1)',
   textInput: 'rgba(14, 25, 49, 0.35)',
-  cardBackground: '#F0EDEB'
+  cardBackground: '#F0EDEB',
+  fullWhite: '#FFFFFF'
 };
 
 export default colors;

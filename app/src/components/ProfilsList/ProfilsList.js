@@ -118,7 +118,10 @@ export function ProfilsList({ profils, inputValue, inputSelectValue }) {
           ))}
         </div>
       )}
-      {filteredProfils && filteredProfils.length === 0 && !inputSelectValueIsEmpty && (
+      {filteredProfils && filteredProfils.length === 0 && (
+        <Toaster message="Aucuns profils disponibles en base de donnée" type="warning" />
+      )}
+      {filteredProfils && filteredProfils.length === 0 && inputSelectValueIsEmpty && inputValue && (
         <Toaster Component={<ToasterContent inputValue={inputValue} />} type="information" />
       )}
       {inputSelectValueIsEmpty && (

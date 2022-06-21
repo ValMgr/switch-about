@@ -15,6 +15,7 @@ export const ContainerMenu = styled.header`
 	left: 0;
 	right: 0;
 	align-items: center;
+	z-index: 99;
 `;
 
 export const ItemsMenu = styled.ul`

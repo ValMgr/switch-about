@@ -2,13 +2,34 @@
 import React, { useEffect, useState } from 'react';
 
 import Toaster from '../Toaster';
-import { ContainerFormation, ContainerFormations, ListResult, CategoryTitle } from './styledComponents';
+import Card from '../Card';
+import formationsImg from '../../assets/images/formations-img.jpeg';
+import {
+  ContainerFormations,
+  ListResult,
+  CategoryTitle,
+  Container,
+  ContainerContentMore
+} from './styledComponents';
 
-export function ToasterContent({ inputValue }) {
+function ToasterContent({ inputValue }) {
   return(
     <p>Pas de formations disponibles pour cette recherche : 
       <strong>{` "${inputValue}"`}</strong>
     </p>
+  );
+}
+
+function ContentMore({ formation }) {
+  return (
+    <ContainerContentMore>
+      <CategoryTitle>Description :</CategoryTitle>
+      <p>{formation.description}</p>
+      <CategoryTitle>Durée :</CategoryTitle>
+      <p>{formation.duration} {formation.unit}</p>
+      <CategoryTitle>Compétences requises :</CategoryTitle>
+      <p>{formation.level}</p>
+    </ContainerContentMore>
   );
 }
 
@@ -39,25 +60,23 @@ export function FormationList({ formations, inputValue, inputSelectValue }) {
   }, [inputValue]);
 
   return(
-    <ContainerFormations>
+    <div>
       {filteredFormations && (
-        <div>
+        <Container>
           <ListResult>{filteredFormations.length} résultats</ListResult>
-          {filteredFormations.map(formation => (
-            <ContainerFormation key={formation.id}>
-              <CategoryTitle>Nom de la formation :</CategoryTitle>
-              <p>{formation.name}</p>
-              <CategoryTitle>Lieu :</CategoryTitle>
-              <p>{formation.cities}</p>
-              <CategoryTitle>Durée :</CategoryTitle>
-              <p>{formation.duration} {formation.unit}</p>
-              <CategoryTitle>Compétences requises :</CategoryTitle>
-              <p>{formation.level}</p>
-              <CategoryTitle>Description :</CategoryTitle>
-              <p>{formation.description}</p>
-            </ContainerFormation>
-          ))}
-        </div>
+          <ContainerFormations>
+            {filteredFormations.map(formation => (
+              <Card 
+                key={formation.id}
+                src={formationsImg}
+                title={formation.name}
+                subtitle={formation.cities}
+                description={formation.description}
+                ContentMore={() => <ContentMore formation={formation} />}
+              />
+            ))}
+          </ContainerFormations>
+        </Container>
       )}
       {filteredFormations && filteredFormations.length === 0 && !inputSelectValueIsEmpty && (
         <Toaster Component={<ToasterContent inputValue={inputValue} />} type="information" />
@@ -65,7 +84,7 @@ export function FormationList({ formations, inputValue, inputSelectValue }) {
       {inputSelectValueIsEmpty && (
         <Toaster message="Selectionner une catégorie pour effectuer une recherche" type="warning" />
       )}
-    </ContainerFormations>
+    </div>
   );
 }
 
