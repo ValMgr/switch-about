@@ -11,21 +11,32 @@ module.exports = (profil) => {
 
   filterFormation(filters, (err, res) => {
     if (err) { res.sendStatus(500).send(err); return;}
-    console.log('result: ', res);
+    if (res.length) {
+        res.forEach(formation => {
+            createAdvice({
+                profil: profil.id,
+                formation: formation.id,
+            }, (err, res) => {
+                if (err) { res.sendStatus(500).send(err); return;}
+                console.log("created advice: ", res);
+            }
+            );
+        });
+    }
   });
 };
 
 function filterFormation(filters = {}, result) {
-  const durationQuery = filters.formation_duration.map((interval, i) => {
+  const durationQuery = filters.formation_duration ? filters.formation_duration.map((interval, i) => {
     return `(unit = '${interval[1]}' AND duration BETWEEN ${interval[0][0]} AND ${interval[0][1]})`;
-  });
+  }).join(" OR ") : "TRUE"
   
   db.query(
     `SELECT id FROM FORMATION WHERE 
     category IN (?)
     AND online = ?
     AND cpf IN (?)
-    AND (${durationQuery.join(" OR ")})`,
+    AND (${durationQuery})`,
     [filters.category, filters.formation_type, filters.formation_payment],
     (err, res) => {
       if (err) {
@@ -33,7 +44,14 @@ function filterFormation(filters = {}, result) {
         result(null, err);
       }
      
-      result(null, res);
+        if (res.length) {
+            result(null, res);
+        }
+        else{
+            delete filters.formation_duration;
+            filterFormation(filters, result);
+        }
+      
     }
   );
 }
@@ -45,8 +63,6 @@ function createAdvice(advice, result) {
       result(err, null);
       return;
     }
-
-    console.log("created advice: ", { id: res.insertId, ...advice });
     result(null, { id: res.insertId, ...advice });
   });
 }

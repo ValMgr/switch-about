@@ -105,4 +105,15 @@ Profil.delete = (id, result) => {
   });
 };
 
+Profil.findAdvice = (id, result) => {
+  db.query("SELECT FORMATION.* FROM FORMATION INNER JOIN ADVICE ON ADVICE.formation = FORMATION.id INNER JOIN PROFIL ON ADVICE.profil = ? GROUP BY FORMATION", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    result(null, res);
+  });
+}
+
 module.exports = Profil;
