@@ -27,6 +27,7 @@ export const InputLabel = styled.label`
 	color: ${colors.darkBlue};
 	font-family: ${fonts.title};
 	font-size: 16px;
+	margin-bottom: 8px;
 `;
 
 export const ContainerInput = styled.div`

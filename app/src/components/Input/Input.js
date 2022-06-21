@@ -6,7 +6,9 @@ import { DefaultInput, InputLabel, ContainerInput } from './styledComponents';
 export function Input({ onChange, label, type, pattern, margin }) {
   return (
     <ContainerInput>
-      <InputLabel>{label}</InputLabel>
+      {label && (
+        <InputLabel>{label}</InputLabel>
+      )}
       <DefaultInput type={type} pattern={pattern} onChange={onChange} margin={margin} />
     </ContainerInput>
   );

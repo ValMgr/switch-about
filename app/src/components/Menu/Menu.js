@@ -2,7 +2,7 @@
 import React from 'react';
 
 import Button from '../Button';
-import { IconographicLogo } from '../assets/Svg';
+import { Logo } from '../assets/Svg';
 import {
   ContainerMenu,
   DefaultLink,
@@ -15,7 +15,7 @@ export function Menu({ items, displayButton, buttonContent, buttonTo }) {
   return (
     <ContainerMenu>
       <LogoLink to="/">
-        <IconographicLogo />
+        <Logo />
       </LogoLink>
       <ItemsMenu>
         {items.map(item => (
