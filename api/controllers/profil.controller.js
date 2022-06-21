@@ -17,7 +17,6 @@ exports.getById = (req, res) => {
       res.sendStatus(500);
       return;
     }
-    findFormation(result);
     res.send(result);
   });
 };
@@ -72,11 +71,17 @@ exports.create = (req, res, next) => {
       return;
     }
 
-    
-    // const profil = findFormation(result);
+    findFormation(result);
+    res.send(result);
+  });
+};
 
-    // axios.delete(`https://eu-api.jotform.com/submissions/${submissionId}?apiKey=${process.env.JOTFORM_KEY}`);
-    
+exports.getRecommandedFormation = (req, res) => {
+  Profil.findAdvice(req.params.id, (err, result) => {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
     res.send(result);
   });
 };
