@@ -21,12 +21,20 @@ export function getUserFormAnswersApi() {
   });
 }
 
-export function getUserSubmissionsDetailsApi({ id }) {
-  return axios.get(`http://127.0.0.1:3000/profils/${id}/formations`, {
+export function getFormSubmissionIdApi({ id }) {
+  return axios.get(`http://127.0.0.1:3000/profils/submissionID/${id}`, {
     headers: headers,
     mode: 'no-cors',
     method: 'GET',
   });
 }
 
-export default { getUsersApi, getUserFormAnswersApi };
+export function getUserFormationsAnswersApi({ profilId }) {
+  return axios.get(`http://127.0.0.1:3000/profils/${profilId}/formations`, {
+    headers: headers,
+    mode: 'no-cors',
+    method: 'GET',
+  });
+}
+
+export default { getUsersApi, getUserFormAnswersApi, getUserFormationsAnswersApi };

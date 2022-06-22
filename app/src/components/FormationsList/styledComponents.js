@@ -39,8 +39,8 @@ export const CategoryTitle = styled.p`
 `;
 
 export const ContainerContentMore = styled.div`
-	width: 50%;
-	height: 40%;
+	width: 80%;
+	height: 60%;
 	position: absolute;
 	top: 50%;
 	left: 50%;

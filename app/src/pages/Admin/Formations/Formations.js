@@ -7,6 +7,7 @@ import { InputSearch } from '../../../components/Input';
 import { getFormationsApi } from '../../../services/formations/formations.services';
 import { PageContainer } from '../../styledComponents';
 import { AdminMenu } from '../components';
+import { globalStateContext} from '../../../store';
 
 export function Formations() {
   const [formations, setFormations] = useState();
@@ -14,6 +15,7 @@ export function Formations() {
   const [category, setCategory] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const { isLoggedIn } = React.useContext(globalStateContext);
   const options = [
     {
       id: 0,
@@ -57,7 +59,9 @@ export function Formations() {
   useEffect(() => {
     getFormations();
   }, []);
-
+  console.log(isLoggedIn);
+  if(isLoggedIn == 'false') return <p>toto</p>;
+  
   if(error) {
     return (
       <PageContainer>
@@ -81,6 +85,7 @@ export function Formations() {
   }
 
   return (
+  
     <PageContainer>
       <AdminMenu />
       <h2>Les formations</h2>
