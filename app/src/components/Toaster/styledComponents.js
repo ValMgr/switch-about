@@ -9,31 +9,31 @@ export const ContainerToaster = styled.div`
 	text-align: left;
 	margin: 1rem 0;
 	border-radius: 0.6rem;
-	background-color: ${colors.inputWhite};
+	display: flex;
+	align-items: center;
 
 	${({ type }) => {
     if(type === 'error') {
       return css`
-				border: 2px solid ${colors.red};
-				box-shadow: 0px 0px 8px rgba(192, 0, 0, 0.25);
+				border: 2px solid ${colors.orange};
+				background-color: ${colors.backgroundToasterError};
 
 				p {
-					color: ${colors.red}!important;
+					color: ${colors.orange}!important;
 				}
 			`;
     } else if(type === 'warning') {
       return css`
-				border: 2px solid ${colors.orange};
-				box-shadow: 0px 0px 8px rgba(192, 0, 0, 0.25);
+				border: 2px solid ${colors.yellow};
+				background-color: ${colors.backgroundToasterWarning};
 
 				p {
-					color: ${colors.orange}!important;
+					color: ${colors.yellow}!important;
 				}
 				`;
     } else if(type === 'success') {
       return css`
 				border: 2px solid ${colors.green};
-				box-shadow: 0px 0px 8px rgba(0, 192, 133, 0.25);
 				
 				p {
 					color: ${colors.green}!important;
@@ -41,13 +41,43 @@ export const ContainerToaster = styled.div`
 			`;
     } else if(type === 'information') {
       return css`
-				border: 2px solid ${colors.lightBlue};
-				box-shadow: 0px 0px 8px rgba(64, 160, 244, 0.25);
+				border: 2px solid ${colors.darkBlue};
+				background-color: ${colors.backgroundToasterInformation};
 				
 				p {
-					color: ${colors.lightBlue}!important;
+					color: ${colors.darkBlue}!important;
 				}
 			`;
     }
   }}
+`;
+
+export const ContainerSvg = styled.div`
+	width: fit-content;
+	height: fit-content;
+	margin-right: 1rem;
+
+	svg {
+		path {
+		${({ type }) => {
+    if(type === 'error') {
+      return css`
+				fill: ${colors.orange}!important;
+				`;
+    } else if(type === 'warning') {
+      return css`
+				fill: ${colors.yellow};
+					`;
+    } else if(type === 'success') {
+      return css`
+					fill: ${colors.green};
+				`;
+    } else if(type === 'information') {
+      return css`
+				fill: ${colors.darkBlue};
+			`;
+    }
+  }}
+	}
+}
 `;

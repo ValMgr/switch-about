@@ -1,19 +1,24 @@
 import styled from 'styled-components';
+
 import { colors, fonts } from '../../theme';
 
 export const ContainerInformations = styled.div`
 	padding: 1rem 2rem;
 `;
 
-export const ContainerImage = styled.img`
-	width: 100%;
-	height: 40%;
-	object-fit: cover;
+export const ContainerIcon = styled.div`
+	width: fit-content;
+	height: fit-content;
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
 `;
 
 export const Subtitle = styled.p`
-	font-size: 1rem;
+	font-size: 1.3rem;
 	margin: 0;
+	font-family: ${fonts.titleFont};
+	width: 80%;
 `;
 
 export const ContainerFormation = styled.div`
@@ -28,24 +33,23 @@ export const ContainerFormation = styled.div`
 	margin: 0.5rem 0;
 	position: relative;
 	z-index: 1;
+	padding: 1.5rem;
 `;
 
 export const Title = styled.p`
-	font-size: 1.5rem;
-	margin: 0.5rem 0;
-	font-family: ${fonts.titleFont};
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	font-family: ${fonts.bodyFont};
 `;
 
 export const Description = styled.p`
-	height: 50px;
-	white-space: nowrap;
   overflow: hidden;
-	text-overflow: ellipsis;
+	height: 50px;
 `;
 
 export const ContainerButton = styled.div`
 	position: absolute;
-	left: 2rem;
+	left: 1.5rem;
 	top: 87%;
 `;
 
@@ -54,7 +58,7 @@ export const BackgroundPopup = styled.div`
 	height: 100%;
 	z-index: 999;
 	background-color: ${colors.black};
-	opacity: 0.2;
+	opacity: 0.5;
 	backdrop-filter: blur(10px);
 `;
 
@@ -67,4 +71,32 @@ export const ContainerPopup = styled.div`
 	height: 100vh;
 	position: fixed;
 	z-index: 999;
+`;
+
+export const ContainerDetails = styled.div`
+	border-radius: 1rem;
+	background-color: ${colors.lightGray};
+	height: 100px;
+	padding: 0.6rem 0.8rem;
+	position: absolute;
+	bottom: 5rem;
+	left: 1.5rem;
+	right: 1.5rem;
+`;
+
+export const ContainerClockPin = styled.div`
+	display: flex;
+	width: 100%;
+	height: fit-content;
+`;
+
+export const ContainerItem = styled.div`
+	display: flex;
+	width: ${({ width }) => width};
+	height: fit-content;
+	align-items: center;
+`;
+
+export const TextItem = styled.p`
+	margin: 0.5rem 0 0.5rem 0.5rem;
 `;

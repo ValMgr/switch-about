@@ -1,3 +1,9 @@
 export { default as Logo } from './Logo';
 export { default as IconographicLogo } from './IconographicLogo';
 export { default as TypographicLogo } from './TypographicLogo';
+export { default as IconCard } from './IconCard';
+export { default as ClockSvg } from './ClockSvg';
+export { default as PriceSvg } from './PriceSvg';
+export { default as PinSvg } from './PinSvg';
+export { default as WarningSvg } from './WarningSvg';
+export { default as InformationSvg } from './InformationSvg';
