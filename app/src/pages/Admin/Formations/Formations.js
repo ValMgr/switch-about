@@ -85,7 +85,6 @@ export function Formations() {
   }
 
   return (
-  
     <PageContainer>
       <AdminMenu />
       <h2>Les formations</h2>

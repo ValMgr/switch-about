@@ -8,6 +8,7 @@ export const colors = {
   green: '#4CA995',
   red: '#C00000',
   lightBlue: '#33AFEC',
+  lightBlue2: '#D6EFFB',
   white: '#FAF8F7',
   inputWhite: '#FFFDFC',
   black: '#0E1931',
@@ -15,7 +16,8 @@ export const colors = {
   textInput: 'rgba(14, 25, 49, 0.35)',
   cardBackground: '#F0EDEB',
   fullWhite: '#FFFFFF',
-  lightGray: '#F8F9FD'
+  lightGray: '#F8F9FD',
+  background: '#F8F9FD'
 };
 
 export default colors;

@@ -14,6 +14,7 @@ export function Profils() {
   const [research, setResearch] = useState('');
   const [category, setCategory] = useState();
   const [error, setError] = useState();
+  const [show, setShow] = useState(false);
   const options = [
     {
       id: 0,
@@ -42,7 +43,7 @@ export function Profils() {
     {
       id: 6,
       value: 'Email',
-    },
+    }
   ];
 
   function getUserFormAnswers() {
@@ -68,6 +69,14 @@ export function Profils() {
     setCategory(event.target.value.toLowerCase());
   }
 
+  function onClick() {
+    if(show) {
+      setShow(false);
+    } else {
+      setShow(true);
+    }
+  }
+
   useEffect(() => {
     getUserFormAnswers();
   }, []);
@@ -89,7 +98,7 @@ export function Profils() {
       <PageContainer>
         <AdminMenu />
         <h2>Les profiles</h2>
-        <Loader message="Chargement des profiles..." />
+        <Loader message="Chargement des profils..." />
       </PageContainer>
     );
   }
@@ -108,6 +117,8 @@ export function Profils() {
         profils={profils}
         inputValue={research}
         inputSelectValue={category}
+        onClick={onClick}
+        show={show}
       />
     </PageContainer>
   );
