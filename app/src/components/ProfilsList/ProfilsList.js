@@ -114,6 +114,8 @@ export function ProfilsList({ profils, inputValue, inputSelectValue }) {
               <p>{profil.phone}</p>
               <CategoryTitle>Âge</CategoryTitle>
               <p>{profil.age}</p>
+              <CategoryTitle>Formations :</CategoryTitle>
+              {profil.formations && profil.formations.map(formation => (<p key={profil.id + '-' + formation.id}>{formation.name}</p>))}
             </ContainerProfil>
           ))}
         </div>

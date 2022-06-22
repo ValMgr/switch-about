@@ -12,7 +12,8 @@ module.exports = (profil) => {
   filterFormation(filters, (err, res) => {
     if (err) { res.sendStatus(500).send(err); return;}
     if (res.length) {
-        res.forEach(formation => {
+        res.forEach((formation, count) => {
+            if(count > 5) return;
             createAdvice({
                 profil: profil.id,
                 formation: formation.id,
@@ -51,7 +52,7 @@ function filterFormation(filters = {}, result) {
             delete filters.formation_duration;
             filterFormation(filters, result);
         }
-      
+        
     }
   );
 }

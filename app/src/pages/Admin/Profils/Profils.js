@@ -6,7 +6,7 @@ import ProfilsList from '../../../components/ProfilsList';
 import Toaster from '../../../components/Toaster';
 import Loader from '../../../components/Loader';
 import { InputSearch } from '../../../components/Input';
-import { getUserFormAnswersApi } from '../../../services/users/users.services';
+import { getUserFormAnswersApi, getUserFormationsAnswersApi } from '../../../services/users/users.services';
 
 export function Profils() {
   const [profils, setProfils] = useState();
@@ -47,10 +47,13 @@ export function Profils() {
 
   function getUserFormAnswers() {
     setLoading(true);
-
     getUserFormAnswersApi().then(response => {
+      const profils = response.data
+      profils.forEach(async (profil) => {
+        profil.formations = await getUserFormationsAnswersApi({ profilId: profil.id}).then(res => res.data);
+      });
+      setProfils(profils);
       setLoading(false);
-      setProfils(response.data);
     }).catch(() => {
       setError(true);
     }).finally(() => {
