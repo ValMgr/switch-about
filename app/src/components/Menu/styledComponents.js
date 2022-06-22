@@ -7,7 +7,7 @@ export const ContainerMenu = styled.header`
 	width: 100%;
 	height: fit-content;
 	padding: 10px 50px;
-	background-color: ${colors.white};
+	background-color: ${colors.background};
 	display: flex;
 	justify-content: space-between;
 	position: fixed;
