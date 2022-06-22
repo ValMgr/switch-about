@@ -2,7 +2,9 @@
 
 @font-face {
   font-family: "Slenco";
-  src: url("./assets/fonts/Slenco-Black/Slenco-Black.otf") format("otf");
+  src:  url("./assets/fonts/Slenco-Black/Slenco-Black.otf") format("otf"),
+        url('./assets/fonts/Slenco-Black/Slenco-Black.woff2') format('woff2'),
+        url('./assets/fonts/Slenco-Black/Slenco-Black.woff') format('woff');
 }
 
 * {
