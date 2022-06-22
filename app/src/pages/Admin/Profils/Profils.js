@@ -8,7 +8,7 @@ import Loader from '../../../components/Loader';
 import { InputSearch } from '../../../components/Input';
 import { getUserFormAnswersApi } from '../../../services/users/users.services';
 
-export function Profiles() {
+export function Profils() {
   const [profils, setProfils] = useState();
   const [loading, setLoading] = useState();
   const [research, setResearch] = useState('');
@@ -95,7 +95,7 @@ export function Profiles() {
   return (
     <PageContainer>
       <AdminMenu />
-      <h2>Les profiles</h2>
+      <h2>Les profils</h2>
       <p>Consulter les réponses des formulaires remplis par les utilisateurs.</p>
       <InputSearch
         options={options}
@@ -111,4 +111,4 @@ export function Profiles() {
   );
 }
 
-export default Profiles;
+export default Profils;

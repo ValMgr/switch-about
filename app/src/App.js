@@ -7,8 +7,9 @@ import Formations from './pages/Admin/Formations';
 import Login from './pages/Login';
 import AdminHome from './pages/Admin/AdminHome';
 import FindFormations from './pages/FindFormations';
-import Profiles from './pages/Admin/Profiles';
+import Profils from './pages/Admin/Profils';
 import Registration from './pages/Admin/Registration';
+import ResultFormations from './pages/ResultFormations';
 import { getUsersApi } from './services/users/users.services';
 
 function AdminRoute({ isAuthorize, PageComponent }) {
@@ -85,7 +86,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trouver-une-formation" element={<FindFormations />} />
-        <Route path="/profiles" element={<Profiles />} />
+        <Route path="/trouver-une-formation/resultats" element={<ResultFormations />} />
+        <Route path="/profils" element={<Profils />} />
         <Route path="/formations" element={<Formations />} />
         <Route path="/creer-compte-membre" element={<Registration />} />
         {/* <Route

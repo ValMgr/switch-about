@@ -16,8 +16,8 @@ export function AdminMenu() {
     },
     {
       id: 2,
-      label: 'Les profiles',
-      linkTo: '/profiles'
+      label: 'Les profils',
+      linkTo: '/profils'
     }
   ];
   return <Menu items={items} displayButton={true} buttonContent="Se déconnecter" buttonTo="/" />;

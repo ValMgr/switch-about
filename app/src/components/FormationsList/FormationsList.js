@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import Toaster from '../Toaster';
 import Card from '../Card';
-import formationsImg from '../../assets/images/formations-img.jpeg';
+import { IconCard } from '../assets/Svg';
 import {
   ContainerFormations,
   ListResult,
@@ -25,10 +25,14 @@ function ContentMore({ formation }) {
     <ContainerContentMore>
       <CategoryTitle>Description :</CategoryTitle>
       <p>{formation.description}</p>
-      <CategoryTitle>Durée :</CategoryTitle>
-      <p>{formation.duration} {formation.unit}</p>
       <CategoryTitle>Compétences requises :</CategoryTitle>
       <p>{formation.level}</p>
+      <CategoryTitle>Organisme de financement :</CategoryTitle>
+      <p>{formation.organism}</p>
+      <CategoryTitle>CPF :</CategoryTitle>
+      <p>{formation.cpf === 1 ? 'Oui' : 'Non'}</p>
+      <CategoryTitle>Formation en ligne :</CategoryTitle>
+      <p>{formation.online === 1 ? 'Oui' : 'Non'}</p>
     </ContainerContentMore>
   );
 }
@@ -68,10 +72,13 @@ export function FormationList({ formations, inputValue, inputSelectValue }) {
             {filteredFormations.map(formation => (
               <Card 
                 key={formation.id}
-                src={formationsImg}
+                Icon={<IconCard />}
                 title={formation.name}
-                subtitle={formation.cities}
+                subtitle={formation.category}
                 description={formation.description}
+                duration={`${formation.duration} ${formation.unit}`}
+                price={formation.price}
+                location={formation.cities}
                 ContentMore={() => <ContentMore formation={formation} />}
               />
             ))}
