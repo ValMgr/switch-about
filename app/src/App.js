@@ -11,6 +11,8 @@ import Profils from './pages/Admin/Profils';
 import Registration from './pages/Admin/Registration';
 import ResultFormations from './pages/ResultFormations';
 import { getUsersApi } from './services/users/users.services';
+import {globalStateContext, globalState} from './store';
+
 
 function AdminRoute({ isAuthorize, PageComponent }) {
   if(isAuthorize) {
@@ -64,6 +66,14 @@ function App() {
             setIsAuthorize(true);
             const id = user.id - 1;
             setCurrentUserId(id);
+            localStorage.setItem('isLoggedIn', true);
+            localStorage.setItem('userId', id);
+
+            globalState.isLoggedIn = localStorage.getItem('isLoggedIn');
+            globalState.userId = localStorage.getItem('userId');
+
+            // globalState.isLoggedIn = true;
+            // globalState.userId = id;
           }
 
           setAuthentificationFail(true);
@@ -82,60 +92,52 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/trouver-une-formation" element={<FindFormations />} />
-        <Route path="/trouver-une-formation/resultats" element={<ResultFormations />} />
-        <Route path="/profils" element={<Profils />} />
-        <Route path="/formations" element={<Formations />} />
-        <Route path="/creer-compte-membre" element={<Registration />} />
-        {/* <Route
-          path="/formations"
-          element={
-            <AdminRoute
-              PageComponent={<Formations />}
-            />
-          }
-        />
-        <Route
-          path="/registration"
-          element={
-            <AdminRoute
-              PageComponent={<Registration />}
-            />
-          }
-        /> */}
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute
-              PageComponent={<AdminHome />}
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={isAuthorize ?
-            <AdminHome userName={users[currentUserId].firstname} /> : (
-              <Login
-                users={users}
-                onSubmit={onSubmit}
-                onUserNameChange={onUserNameChange}
-                onPasswordChange={onPasswordChange}
-                isAuthorize={isAuthorize}
-                currentUserId={currentUserId}
-                loading={loading}
-                error={error}
-                email={email}
-                password={password}
-                authentificationFail={authentificationFail}
+    <globalStateContext.Provider value={globalState}>
+      <Router>
+        <Routes>
+        
+
+          <Route path="/" element={<Home />} />
+          <Route path="/trouver-une-formation" element={<FindFormations />} />
+          <Route
+            path="/trouver-une-formation/resultats/:submissionId"
+            element={<ResultFormations />}
+          />
+          <Route path="/profils" element={<Profils />} />
+          <Route path="/formations" element={<Formations />} />
+          <Route path="/creer-compte-membre" element={<Registration />} />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute
+                PageComponent={<AdminHome />}
               />
-            )
-          }
-        />
-      </Routes>
-    </Router>
+            }
+          />
+          <Route
+            path="/login"
+            element={isAuthorize ?
+              <AdminHome userName={users[currentUserId].firstname} /> : (
+                <Login
+                  users={users}
+                  onSubmit={onSubmit}
+                  onUserNameChange={onUserNameChange}
+                  onPasswordChange={onPasswordChange}
+                  isAuthorize={isAuthorize}
+                  currentUserId={currentUserId}
+                  loading={loading}
+                  error={error}
+                  email={email}
+                  password={password}
+                  authentificationFail={authentificationFail}
+                />
+              )
+            }
+          />
+        </Routes>
+      </Router>
+    </globalStateContext.Provider>
+
   );
 }
 
