@@ -43,7 +43,7 @@ exports.delete = (req, res) => {
 
 exports.create = (req, res, next) => {
   const formData = JSON.parse(req.body.rawRequest);
-  console.log('submissionID', req.body.submissionID);
+  console.log("submissionID", req.body.submissionID);
   const profil = {
     firstname: formData.q3_name.first,
     lastname: formData.q3_name.last,

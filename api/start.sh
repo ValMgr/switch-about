@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source ./.env
 npm run start &
 
 # Open localtunnel to the API
