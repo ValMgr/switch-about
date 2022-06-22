@@ -16,7 +16,7 @@ export function ToasterContent({ inputValue }) {
 }
 
 export function ProfilsList({ profils, inputValue, inputSelectValue }) {
-  const [filteredProfils, setFilteredProfils] = useState();
+  const [filteredProfils, setFilteredProfils] = useState([]);
   const [inputSelectValueIsEmpty, setInputSelectValueIsEmpty] = useState(false);
 
   useEffect(() => {
@@ -47,7 +47,8 @@ export function ProfilsList({ profils, inputValue, inputSelectValue }) {
         }
       }
     }));
-  }, [inputValue]);
+  }, [inputValue, profils]);
+
 
   return(
     <ContainerProfils>

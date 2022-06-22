@@ -9,7 +9,7 @@ import { InputSearch } from '../../../components/Input';
 import { getUserFormAnswersApi, getUserFormationsAnswersApi } from '../../../services/users/users.services';
 
 export function Profils() {
-  const [profils, setProfils] = useState();
+  const [profils, setProfils] = useState([]);
   const [loading, setLoading] = useState();
   const [research, setResearch] = useState('');
   const [category, setCategory] = useState();
@@ -48,11 +48,10 @@ export function Profils() {
   function getUserFormAnswers() {
     setLoading(true);
     getUserFormAnswersApi().then(response => {
-      const profils = response.data
-      profils.forEach(async (profil) => {
+      response.data.forEach(async (profil) => {
         profil.formations = await getUserFormationsAnswersApi({ profilId: profil.id}).then(res => res.data);
+        setProfils(profils => [...profils, profil]);
       });
-      setProfils(profils);
       setLoading(false);
     }).catch(() => {
       setError(true);
